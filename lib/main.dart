@@ -1,3 +1,4 @@
+import 'package:find_house/pages/home_page.dart';
 import 'package:find_house/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 

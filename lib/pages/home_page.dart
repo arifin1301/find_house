@@ -6,13 +6,38 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Text(
-              "Home Page",
-              style: blackTextStyle,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 24.0,
+            left: 24.0,
+          ),
+          child: ListView(
+            children: [
+              Text("Explore Now", style: blackTextStyle.copyWith(fontSize: 24)),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                "Mencari Kosan yang Cozy",
+                style: greyTextStyle.copyWith(fontSize: 16),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Populer Cities',
+                style: blackTextStyle.copyWith(
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [Container()],
+              )
+            ],
+          ),
         ),
       ),
     );
