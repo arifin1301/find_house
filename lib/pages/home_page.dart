@@ -1,6 +1,8 @@
 import 'package:find_house/models/city.dart';
+import 'package:find_house/models/space.dart';
 import 'package:find_house/pages/theme.dart';
 import 'package:find_house/widgets/city_card.dart';
+import 'package:find_house/widgets/space_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,6 +16,7 @@ class HomePage extends StatelessWidget {
             left: 24.0,
           ),
           child: ListView(
+            // NOTE: TITLE / HEADER =================
             children: [
               Text("Explore Now", style: blackTextStyle.copyWith(fontSize: 26)),
               SizedBox(
@@ -26,6 +29,7 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
+              // NOTES: POPULER CITIES ===============
               Text(
                 'Populer Cities',
                 style: blackTextStyle.copyWith(
@@ -72,7 +76,51 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              // NOTES : RECOMMED SPACE ===============
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                "Recommended Space",
+                style: blackTextStyle.copyWith(fontSize: 18),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SpaceCard(
+                Space(
+                    id: 1,
+                    rating: '4/5',
+                    name: 'Kuretakeso Hott',
+                    cost: 52,
+                    address: 'Bandung, Indonesia',
+                    ImageUrl: 'assets/images/space1.png'),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              SpaceCard(
+                Space(
+                    id: 2,
+                    rating: '5/5',
+                    name: 'Roemah Nenek',
+                    cost: 11,
+                    address: 'Bogor, Indonesia',
+                    ImageUrl: 'assets/images/space2.png'),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              SpaceCard(
+                Space(
+                    id: 3,
+                    rating: '3/5',
+                    name: 'Darrling How',
+                    cost: 20,
+                    address: 'Jakarta, Indonesia',
+                    ImageUrl: 'assets/images/space3.png'),
+              ),
             ],
           ),
         ),
