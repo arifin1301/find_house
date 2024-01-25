@@ -1,3 +1,4 @@
+import 'package:find_house/pages/theme.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,7 +8,10 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Text("Home Page"),
+            Text(
+              "Home Page",
+              style: blackTextStyle,
+            ),
           ],
         ),
       ),
