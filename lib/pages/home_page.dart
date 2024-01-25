@@ -1,4 +1,6 @@
+import 'package:find_house/models/city.dart';
 import 'package:find_house/pages/theme.dart';
+import 'package:find_house/widgets/city_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,13 +15,13 @@ class HomePage extends StatelessWidget {
           ),
           child: ListView(
             children: [
-              Text("Explore Now", style: blackTextStyle.copyWith(fontSize: 24)),
+              Text("Explore Now", style: blackTextStyle.copyWith(fontSize: 26)),
               SizedBox(
                 height: 2,
               ),
               Text(
                 "Mencari Kosan yang Cozy",
-                style: greyTextStyle.copyWith(fontSize: 16),
+                style: greyTextStyle.copyWith(fontSize: 18),
               ),
               SizedBox(
                 height: 30,
@@ -27,14 +29,49 @@ class HomePage extends StatelessWidget {
               Text(
                 'Populer Cities',
                 style: blackTextStyle.copyWith(
-                  fontSize: 16,
+                  fontSize: 18,
                 ),
               ),
               SizedBox(
                 height: 16,
               ),
-              Row(
-                children: [Container()],
+              Container(
+                height: 160,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    CityCard(
+                      City(
+                          id: 1,
+                          name: 'Jakarta',
+                          ImageUrl: 'assets/images/pic_city1.png',
+                          populer: false),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    CityCard(
+                      City(
+                          id: 2,
+                          name: 'Bandung',
+                          ImageUrl: 'assets/images/pic_city2.png',
+                          populer: true),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    CityCard(
+                      City(
+                          id: 3,
+                          name: 'Surabaya',
+                          ImageUrl: 'assets/images/pic_city3.png',
+                          populer: false),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                  ],
+                ),
               )
             ],
           ),
