@@ -2,6 +2,7 @@ import 'package:find_house/models/city.dart';
 import 'package:find_house/models/space.dart';
 import 'package:find_house/models/tips.dart';
 import 'package:find_house/pages/theme.dart';
+import 'package:find_house/widgets/bottom_navbar_item.dart';
 import 'package:find_house/widgets/city_card.dart';
 import 'package:find_house/widgets/space_card.dart';
 import 'package:find_house/widgets/tips_card.dart';
@@ -127,6 +128,7 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
+              // TIPS & GUIDANCE =======================
               Text(
                 "Tips & Guidance",
                 style: blackTextStyle.copyWith(fontSize: 18),
@@ -144,13 +146,48 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 18,
               ),
-              TipsCard(Tips(
-                  id: 2,
-                  ImageUrl: 'assets/images/icon2.png',
-                  title: 'Jakarta Fairship',
-                  date: 'Updated 11 Dec'))
+              TipsCard(
+                Tips(
+                    id: 2,
+                    ImageUrl: 'assets/images/icon2.png',
+                    title: 'Jakarta Fairship',
+                    date: 'Updated 11 Dec'),
+              ),
+              SizedBox(
+                height: 100,
+              ),
             ],
           ),
+        ),
+      ),
+      floatingActionButton: Container(
+        height: 69,
+        width: MediaQuery.of(context).size.width - (2 * 29),
+        margin: EdgeInsets.only(left: 24, right: 18),
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 232, 232, 232),
+          borderRadius: BorderRadius.circular(23),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            BottomNavbarItem(
+              ImageUrl: "assets/images/Icon_home.png",
+              isActive: true,
+            ),
+            BottomNavbarItem(
+              ImageUrl: "assets/images/Icon_mail.png",
+              isActive: false,
+            ),
+            BottomNavbarItem(
+              ImageUrl: "assets/images/Icon_card.png",
+              isActive: false,
+            ),
+            BottomNavbarItem(
+              ImageUrl: "assets/images/Icon_love.png",
+              isActive: false,
+            ),
+          ],
         ),
       ),
     );
