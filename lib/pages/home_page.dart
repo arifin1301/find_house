@@ -1,8 +1,10 @@
 import 'package:find_house/models/city.dart';
 import 'package:find_house/models/space.dart';
+import 'package:find_house/models/tips.dart';
 import 'package:find_house/pages/theme.dart';
 import 'package:find_house/widgets/city_card.dart';
 import 'package:find_house/widgets/space_card.dart';
+import 'package:find_house/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        bottom: false,
         child: Padding(
           padding: const EdgeInsets.only(
             top: 24.0,
@@ -121,6 +124,31 @@ class HomePage extends StatelessWidget {
                     address: 'Jakarta, Indonesia',
                     ImageUrl: 'assets/images/space3.png'),
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                "Tips & Guidance",
+                style: blackTextStyle.copyWith(fontSize: 18),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              TipsCard(
+                Tips(
+                    id: 1,
+                    ImageUrl: 'assets/images/icon1.png',
+                    title: 'City Guidelines',
+                    date: 'Updated 20 Apr'),
+              ),
+              SizedBox(
+                height: 18,
+              ),
+              TipsCard(Tips(
+                  id: 2,
+                  ImageUrl: 'assets/images/icon2.png',
+                  title: 'Jakarta Fairship',
+                  date: 'Updated 11 Dec'))
             ],
           ),
         ),
