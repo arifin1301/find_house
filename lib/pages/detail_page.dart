@@ -1,38 +1,26 @@
 import 'package:find_house/pages/theme.dart';
+import 'package:find_house/widgets/facilities.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
+  launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      launch(url);
+    } else {
+      throw (url);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
           bottom: false,
           child: Stack(
             children: [
               Image.asset('assets/images/detail_pic.png'),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Image.asset(
-                        'assets/images/btn_back.png',
-                        height: 40,
-                        width: 40,
-                      ),
-                    ),
-                    Image.asset(
-                      'assets/images/btn_wishlist.png',
-                      height: 40,
-                      width: 40,
-                    ),
-                  ],
-                ),
-              ),
               ListView(
                 children: [
                   SizedBox(
@@ -127,86 +115,20 @@ class DetailPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/logo_kitchen.png',
-                                      width: 32,
-                                      height: 32,
-                                    ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text.rich(
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: '12',
-                                          style: purpleTextStyle.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                        TextSpan(
-                                          text: ' Kitchen',
-                                          style: greyTextStyle.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                      ]),
-                                    ),
-                                  ],
+                                Facalities(
+                                  imageUrl: "assets/images/logo_kitchen.png",
+                                  name: 'kitchen',
+                                  total: 2,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/logo_bedroom.png',
-                                      width: 32,
-                                      height: 32,
-                                    ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text.rich(
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: '3',
-                                          style: purpleTextStyle.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                        TextSpan(
-                                          text: ' Bedroom',
-                                          style: greyTextStyle.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                      ]),
-                                    ),
-                                  ],
+                                Facalities(
+                                  imageUrl: "assets/images/logo_bedroom.png",
+                                  name: 'bedroom',
+                                  total: 3,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/logo_cupboard.png',
-                                      width: 32,
-                                      height: 32,
-                                    ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text.rich(
-                                      TextSpan(children: [
-                                        TextSpan(
-                                          text: '3',
-                                          style: purpleTextStyle.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                        TextSpan(
-                                          text: ' Big Lemari',
-                                          style: greyTextStyle.copyWith(
-                                              fontSize: 14),
-                                        ),
-                                      ]),
-                                    ),
-                                  ],
+                                Facalities(
+                                  imageUrl: "assets/images/logo_cupboard.png",
+                                  name: 'Big Lemari',
+                                  total: 12,
                                 ),
                               ],
                             ),
@@ -221,6 +143,7 @@ class DetailPage extends StatelessWidget {
                               height: 12,
                             ),
                             Row(
+                              // scrollDirection: Axis.horizontal,
                               children: [
                                 Container(
                                   height: 88,
@@ -290,10 +213,16 @@ class DetailPage extends StatelessWidget {
                                   ],
                                 ),
                                 Spacer(),
-                                Image.asset(
-                                  'assets/images/btn_location.png',
-                                  height: 40,
-                                  width: 40,
+                                InkWell(
+                                  onTap: () {
+                                    launchUrl(
+                                        'https://maps.app.goo.gl/kq1UsuiWTkcBjhhg9');
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/btn_location.png',
+                                    height: 40,
+                                    width: 40,
+                                  ),
                                 ),
                               ],
                             ),
@@ -307,17 +236,49 @@ class DetailPage extends StatelessWidget {
                                 color: purpleColor,
                                 borderRadius: BorderRadius.circular(17),
                               ),
-                              child: Center(
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: purpleColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(17),
+                                      )),
+                                  onPressed: () {
+                                    launchUrl('https://wa.me/6287860183018');
+                                  },
                                   child: Text(
-                                'Book Now',
-                                style: whiteTextStyle.copyWith(fontSize: 18),
-                              )),
+                                    'Book Now',
+                                    style:
+                                        whiteTextStyle.copyWith(fontSize: 18),
+                                  )),
                             )
                           ]),
                     ),
                   )
                 ],
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/images/btn_back.png',
+                        height: 40,
+                        width: 40,
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/images/btn_wishlist.png',
+                      height: 40,
+                      width: 40,
+                    ),
+                  ],
+                ),
+              ),
             ],
           )),
     );
